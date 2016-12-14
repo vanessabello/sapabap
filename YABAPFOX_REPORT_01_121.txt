@@ -1,0 +1,34 @@
+*&---------------------------------------------------------------------*
+*& Report  YABAPFOX_REPORT_01_121
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT YABAPFOX_REPORT_01_121.
+
+" Declaracoes (g) Global (t) table (w) linha da tabela
+
+data: gt_SFLIGHT type STANDARD TABLE OF SFLIGHT.
+data: gw_SFLIGHT type SFLIGHT.
+
+" Criando campo da tela
+PARAMETERS: p_carrid type SFLIGHT-carrid,
+            p_connid type SFLIGHT-connid.
+" Selecao no banco de dados
+
+Select * FROM SFLIGHT
+  INTO table gt_SFLIGHT
+  WHERE CarrId = p_CarrId
+  AND   ConnId = p_ConnId.
+
+  " Exibir na tela
+
+  LOOP AT gt_SFLIGHT INTO gw_SFLIGHT.
+    WRITE: / gw_SFLIGHT-CarrId,
+             gw_SFLIGHT-ConnId,
+             gw_SFLIGHT-FlDate,
+             gw_SFLIGHT-Price,
+             gw_SFLIGHT-Currency.
+ ENDLOOP.
