@@ -1,0 +1,15 @@
+*&---------------------------------------------------------------------*
+*& Report  YABAPFOX_30_121
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT YABAPFOX_30_121.
+
+DATA: gt_spfli type STANDARD TABLE OF spfli.
+
+SELECT * FROM spfli into table gt_spfli.
+
+INSERT yfox_spfli_121_2 FROM TABLE gt_spfli.
